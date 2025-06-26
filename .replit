@@ -1,0 +1,17 @@
+# .replit file for a Next.js + Genkit application
+
+# This command is executed when the "Run" button is pressed.
+# It installs all necessary npm packages, then starts the Genkit AI server
+# in the background (&) and finally starts the Next.js development server.
+run = "npm install && npm run genkit:watch & npm run dev"
+
+# Specifies the Nix environment channel.
+[nix]
+channel = "stable-23_11"
+
+# Configures the port forwarding for the Next.js application.
+# Replit will detect the service on local port 9002 and make it
+# available externally.
+[[ports]]
+localPort = 9002
+externalPort = 80
