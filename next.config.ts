@@ -46,7 +46,14 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+    // Uncomment for static export (required for static hosting)
+    // unoptimized: true,
   },
+  // Uncomment the following for static export to platforms like Webflow
+  // Note: This will disable many dynamic features including:
+  // - Firebase integration, AI chatbot, real-time features, server actions
+  // output: 'export',
+  // trailingSlash: true,
   async headers() {
     return [
       {

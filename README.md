@@ -181,6 +181,17 @@ This is a comprehensive e-commerce store application named "MyDukaan", built wit
 
 ## Deployment Strategy
 
+### ⚠️ Webflow Deployment Note | ملاحظة مهمة حول Webflow
+
+**English**: This Next.js application **cannot be directly deployed to Webflow** due to fundamental incompatibilities. Webflow only supports static HTML/CSS/JS, while this app requires server-side features, databases, and dynamic processing. See `DEPLOYMENT.md` for detailed alternatives.
+
+**العربية**: هذا التطبيق المبني بـ Next.js **لا يمكن نشره مباشرة على Webflow** بسبب عدم التوافق الأساسي. Webflow يدعم فقط الملفات الثابتة، بينما هذا التطبيق يحتاج لميزات الخادم وقواعد البيانات. راجع `DEPLOYMENT.md` للبدائل المفصلة.
+
+**Recommended Platforms | المنصات الموصى بها:**
+- ✅ **Vercel** (Best for Next.js | الأفضل للـ Next.js)
+- ✅ **Netlify** (Good alternative | بديل جيد)  
+- ✅ **Firebase App Hosting** (Google integration | تكامل مع Google)
+
 ### Local Development
 - **Prerequisites**: Node.js (v18+) and npm.
 - **Setup**: Run `npm install` to install dependencies.
@@ -189,11 +200,43 @@ This is a comprehensive e-commerce store application named "MyDukaan", built wit
   1. `npm run dev` to start the Next.js development server (port 9002).
   2. `npm run genkit:watch` to start the Genkit development server.
 
-### Production Deployment (Replit/Vercel)
-- **Platform**: Designed for platforms that support Node.js, like Replit, Vercel, or Firebase App Hosting.
-- **Environment**: Configure API keys using the platform's "Secrets" or "Environment Variables" management tool.
-- **Build Command**: `npm run build`
-- **Start Command**: `npm start`
+### Production Deployment Options
+
+#### 1. Vercel (Recommended | موصى به)
+```bash
+npm install -g vercel
+vercel login
+npm run deploy:vercel
+```
+
+#### 2. Netlify
+```bash
+npm run build
+# Upload .next folder to Netlify
+```
+
+#### 3. Firebase App Hosting
+```bash
+npm run deploy:firebase
+```
+
+#### 4. Static Export (Limited Features | ميزات محدودة)
+For static hosting platforms (not recommended for full functionality):
+```bash
+# Enable static export in next.config.ts first
+npm run build
+# Upload 'out' folder to any static host
+```
+
+**Note**: Static export loses database, AI, and real-time features.
+
+### Quick Start Deployment
+
+1. **Read the comprehensive guide**: `DEPLOYMENT.md`
+2. **Configure environment variables** on your chosen platform
+3. **Deploy using platform-specific commands** above
+
+For detailed deployment instructions in Arabic and English, see [`DEPLOYMENT.md`](./DEPLOYMENT.md) and [`DEPLOYMENT_CONFIG.md`](./DEPLOYMENT_CONFIG.md).
 
 ## Configuration Management
 All sensitive information is managed through environment variables. The required variables are:

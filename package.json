@@ -7,9 +7,13 @@
     "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
     "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
     "build": "next build",
+    "build:static": "echo 'Enable static export in next.config.ts first, then run: npm run build' && exit 1",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy:vercel": "vercel --prod",
+    "deploy:netlify": "npm run build && echo 'Upload .next folder to Netlify'",
+    "deploy:firebase": "firebase deploy"
   },
   "dependencies": {
     "@genkit-ai/googleai": "^1.8.0",
