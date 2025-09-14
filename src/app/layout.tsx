@@ -2,21 +2,30 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { ClientProviders } from '@/components/shared/ClientProviders';
 import { Toaster } from '@/components/ui/toaster';
-import { Belleza, Alegreya } from 'next/font/google';
 
-const belleza = Belleza({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-belleza',
-  display: 'swap',
-});
+// Font imports with error handling for build environments
+let belleza: any = { className: '', variable: '--font-belleza' };
+let alegreya: any = { className: '', variable: '--font-alegreya' };
 
-const alegreya = Alegreya({
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-  variable: '--font-alegreya',
-  display: 'swap',
-});
+try {
+  const { Belleza, Alegreya } = require('next/font/google');
+  
+  belleza = Belleza({
+    subsets: ['latin'],
+    weight: ['400'],
+    variable: '--font-belleza',
+    display: 'swap',
+  });
+
+  alegreya = Alegreya({
+    subsets: ['latin'],
+    style: ['normal', 'italic'],
+    variable: '--font-alegreya',
+    display: 'swap',
+  });
+} catch (error) {
+  console.warn('Google Fonts not available, using fallback fonts');
+}
 
 // Simplified metadata to prevent build errors and ensure stability
 export const metadata: Metadata = {
